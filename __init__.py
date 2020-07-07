@@ -7,7 +7,7 @@ class Lotterynumbers(MycroftSkill):
     def __init__(self):
         super(Lotterynumbers, self).__init__(name="Lotterynumbers")
 
-    @intent_handler(IntentBuilder("Lotterynumbers").require("lottery"))
+    @intent_handler(IntentBuilder("Lotterynumbers").require("lotterynumbers.intent"))
     def handle_lotterynumbers(self, message):
         session = requests.get('https://www.national-lottery.co.uk/results/euromillions/draw-history/xml')
         soup = BeautifulSoup(session.content, 'lxml-xml')
