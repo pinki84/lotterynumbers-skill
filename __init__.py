@@ -7,18 +7,13 @@ import time
 import mycroft.audio
 from datetime import datetime
 from mycroft.util.log import LOG
-from mycroft.util.format import nice_date, nice_duration, nice_time
-from mycroft import MycroftSkill, intent_handler, intent_file_handler
-from mycroft.util.parse import (extract_datetime, fuzzy_match, extract_number,
-                                normalize)
-
+from mycroft.util.format import nice_date
 
 __author__ = 'pinki84'
 
 class Lotterynumbers(MycroftSkill):
     def __init__(self):
         super(Lotterynumbers, self).__init__(name="Lotterynumbers")
-        
         
         
     def initialize(self):
@@ -28,7 +23,7 @@ class Lotterynumbers(MycroftSkill):
         locationcode = 'not selected'
         if type(loc) is dict and loc["city"]:
             locationcode = loc["city"]["state"]["country"]["code"]
-        LOG.error(locationcode)
+        #LOG.error(locationcode)
         self.timebetwen = self.settings.get('timebetwen')
          
 
@@ -50,7 +45,6 @@ class Lotterynumbers(MycroftSkill):
             numbers.append(ball.text)
             self.speak(ball.text)
             self.enclosure.mouth_text(ball.text)
-            #self.enclosure.reset()
             time.sleep(1)   
         self.speak_dialog("numbers.luckystar")
         mycroft.audio.wait_while_speaking()
@@ -59,10 +53,8 @@ class Lotterynumbers(MycroftSkill):
             self.enclosure.mouth_text(url.text)
             self.speak(url.text)
             time.sleep(1)
-            #self.enclosure.reset()
         
         for url in soup.find_all('raffle'):
-            #self.speak_dialog(url.text)
             p = (url.text)
         self.enclosure.activate_mouth_events()
         self.speak_dialog("string.raffle")
@@ -80,8 +72,6 @@ class Lotterynumbers(MycroftSkill):
     def handler_lotterynumbers(self, message):
         session = requests.get('https://www.national-lottery.co.uk/results/lotto/draw-history/xml')
         soup = BeautifulSoup(session.content, 'xml')
-        #numbers = list()
-        
         for drawdate in soup.find_all('draw-date'):
             date_time_obj = datetime.strptime(drawdate.text, '%Y-%m-%d').date()
             speak_date = nice_date(date_time_obj, lang=self.lang)
@@ -100,10 +90,8 @@ class Lotterynumbers(MycroftSkill):
         mycroft.audio.wait_while_speaking()
         self.enclosure.deactivate_mouth_events()
         for url in soup.find_all('bonus-ball'):
-            #self.speak_dialog(url.text)
             self.speak(url.text)
             self.enclosure.mouth_text(url.text)
-            #self.enclosure.reset()
             time.sleep(1)
         #mycroft.audio.wait_while_speaking()
         self.enclosure.activate_mouth_events()
