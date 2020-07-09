@@ -1,7 +1,6 @@
 skillMetadata:
    sections:
-      - name: Manual Settings
+      - name: Settings 
         fields:
-            type: label
-            label: Lottery Numbers skill
-            
+          - type: label
+            label: this section needs improvement.
