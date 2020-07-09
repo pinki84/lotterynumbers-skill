@@ -2,13 +2,14 @@
 Lottery numbers
 
 ## About
-Lottery numbers
+Lottery numbers pull request to web to fech numbers from official uk site.
+Skill is for Euromillions and uk Lottery 
 
 ## Examples
 * "Euromillions"
 * "Lottery"
 * "Euromillions numbers"
-
+* "Lottery numbers"
 ## Credits
 okticom
 

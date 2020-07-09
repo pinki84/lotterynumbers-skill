@@ -107,3 +107,4 @@ class Lotterynumbers(MycroftSkill):
         self.enclosure.mouth_reset()
 def create_skill():
     return Lotterynumbers()
+
