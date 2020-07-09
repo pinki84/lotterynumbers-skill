@@ -34,9 +34,7 @@ class Lotterynumbers(MycroftSkill):
     def handler_euromillions(self, message):
         session = requests.get('https://www.national-lottery.co.uk/results/euromillions/draw-history/xml')
         soup = BeautifulSoup(session.content, 'xml')
-        numbers = list()
-        
-        
+        #numbers = list()
         for drawdate in soup.find_all('draw-date'):
             date_time_obj = datetime.strptime(drawdate.text, '%Y-%m-%d').date()
             speak_date = nice_date(date_time_obj, lang=self.lang)
@@ -44,7 +42,7 @@ class Lotterynumbers(MycroftSkill):
         mycroft.audio.wait_while_speaking()
         self.enclosure.deactivate_mouth_events()
         for ball in soup.find_all('ball'):
-            numbers.append(ball.text)
+            #numbers.append(ball.text)
             self.speak(ball.text)
             self.enclosure.mouth_text(ball.text)
             time.sleep(1)   
@@ -55,7 +53,6 @@ class Lotterynumbers(MycroftSkill):
             self.enclosure.mouth_text(url.text)
             self.speak(url.text)
             time.sleep(1)
-        
         for url in soup.find_all('raffle'):
             p = (url.text)
         self.enclosure.activate_mouth_events()
@@ -98,8 +95,6 @@ class Lotterynumbers(MycroftSkill):
         #mycroft.audio.wait_while_speaking()
         self.enclosure.activate_mouth_events()
         self.enclosure.mouth_reset()
-        
-        
     def platform(self):
         """ Get the platform identifier string
 
