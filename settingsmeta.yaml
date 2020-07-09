@@ -2,13 +2,6 @@ skillMetadata:
    sections:
       - name: Manual Settings
         fields:
-          - name: timebetwen
-            label: Settings to set time betwen numbers 
-            type: number
-            value: "1"
-          - name: new
-            label: Show digital clock when idle
-            placeholder: https://github.com/pinki84/lotterynumbers-skill
-            type: number
-            value: 1
+            type: label
+            label: Lottery Numbers skill
             
