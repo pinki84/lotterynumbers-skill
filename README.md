@@ -11,7 +11,7 @@ Skill is for Euromillions and uk Lottery
 * "Euromillions numbers"
 * "Lottery numbers"
 ## Credits
-okticom
+pinki84 
 
 ## Category
 **Information**

@@ -13,7 +13,7 @@ from mycroft.util.parse import (extract_datetime, fuzzy_match, extract_number,
                                 normalize)
 
 
-__author__ = 'okticom'
+__author__ = 'pinki84'
 
 class Lotterynumbers(MycroftSkill):
     def __init__(self):
