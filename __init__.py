@@ -25,6 +25,8 @@ class Lotterynumbers(MycroftSkill):
             locationcode = loc["city"]["state"]["country"]["code"]
         #LOG.error(locationcode)
         self.timebetwen = self.settings.get('timebetwen')
+        #if self.platform == "mycroft_mark_1":
+            
          
 
     @intent_handler(IntentBuilder("euromillions").require("euromillions"))
@@ -96,6 +98,20 @@ class Lotterynumbers(MycroftSkill):
         #mycroft.audio.wait_while_speaking()
         self.enclosure.activate_mouth_events()
         self.enclosure.mouth_reset()
+        
+        
+    def platform(self):
+        """ Get the platform identifier string
+
+        Returns:
+            str: Platform identifier, such as "mycroft_mark_1",
+                 "mycroft_picroft", "mycroft_mark_2".  None for nonstandard.
+        """
+        if self.config_core and self.config_core.get("enclosure"):
+            return self.config_core["enclosure"].get("platform")
+        else:
+            return None
+        
 def create_skill():
     return Lotterynumbers()
 
