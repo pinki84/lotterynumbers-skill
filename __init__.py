@@ -89,12 +89,12 @@ class Lotterynumbers(MycroftSkill):
         mycroft.audio.wait_while_speaking()
         self.enclosure.deactivate_mouth_events()
         for ball in soup.find_all('ball'):
-            numbers.append(ball.text)
+            #numbers.append(ball.text)
             self.speak(ball.text)
             self.enclosure.mouth_text(ball.text)
             #self.enclosure.reset()
             time.sleep(1) 
-        self.enclosure.mouth_reset()  
+        self.enclosure.mouth_reset()   
         self.speak_dialog("numbers.bonus")
         mycroft.audio.wait_while_speaking()
         for url in soup.find_all('bonus-ball'):
